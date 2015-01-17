@@ -1,0 +1,10 @@
+<h1>All Shelters</h1>
+
+<ul>
+<% @shelters.each do |shelter| %>
+  <li>
+    <strong>name: </strong><span><%= shelter.name %></span>
+    <strong>beds available: </strong><span><%= shelter.beds_available %></span>
+  </li>
+<% end %>
+</ul>
