@@ -1,0 +1,5 @@
+<%= form_for [:admin, @shelter, @report] do |f| %>
+  <%= f.label :number_of_beds %>:
+  <%= f.text_field :number_of_beds %><br />
+  <%= f.submit %>
+<% end %>
