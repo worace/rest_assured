@@ -1,0 +1,14 @@
+<h1>Shelters</h1>
+
+<ul>
+<% @shelters.each do |shelter| %>
+  <li>
+    <span><%= shelter.name %></span>
+    <span><%= shelter.address %></span>
+    <span><%= link_to "delete", admin_shelter_path(shelter), :method => "delete" %></span>
+    <span><%= link_to "edit", edit_admin_shelter_path(shelter) %></span>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to "Add a Shelter", new_admin_shelter_path %>

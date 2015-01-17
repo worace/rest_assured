@@ -1,0 +1,42 @@
+<%= form_for [:admin, @shelter] do |f| %>
+  <%= f.label :name %>:
+  <%= f.text_field :name %><br />
+
+  <%= f.label :address %>:
+  <%= f.text_field :address %><br />
+
+  <%= f.label :days_open %>:
+  <%= f.text_field :days_open %><br />
+
+  <%= f.label :hours %>:
+  <%= f.text_field :hours %><br />
+
+  <%= f.label :children_allowed %>:
+  <%= f.check_box :children_allowed %><br />
+
+  <%= f.label :women_only %>:
+  <%= f.check_box :women_only %><br />
+
+  <%= f.label :med_facilities %>:
+  <%= f.check_box :med_facilities %><br />
+
+  <%= f.label :short_term %>:
+  <%= f.check_box :short_term %><br />
+
+  <%= f.label :long_term %>:
+  <%= f.check_box :long_term %><br />
+
+  <%= f.label :showers %>:
+  <%= f.check_box :showers %><br />
+
+  <%= f.label :pets_allowed %>:
+  <%= f.check_box :pets_allowed %><br />
+
+  <%= f.label :phone %>:
+  <%= f.text_field :phone %><br />
+
+  <%= f.label :age_range %>:
+  <%= f.text_field :age_range %><br />
+
+  <%= f.submit %>
+<% end %>

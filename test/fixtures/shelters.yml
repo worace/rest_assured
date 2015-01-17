@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyString
+  days_open: MyString
+  hours: MyString
+  children_allowed: false
+  women_only: false
+  med_facilities: false
+  short_term: false
+  long_term: false
+  pets_allowed: false
+  phone: MyString
+  age_range: MyString
+  showers: false
+
+two:
+  name: MyString
+  address: MyString
+  days_open: MyString
+  hours: MyString
+  children_allowed: false
+  women_only: false
+  med_facilities: false
+  short_term: false
+  long_term: false
+  pets_allowed: false
+  phone: MyString
+  age_range: MyString
+  showers: false
