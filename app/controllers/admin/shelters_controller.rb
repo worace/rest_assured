@@ -28,7 +28,7 @@ class Admin::SheltersController < Admin::BaseController
 
   def destroy
     Shelter.find(params[:id]).destroy
-    redirect_to admin_shelters_path
+    redirect_to admin_root_path
   end
 
   def shelter_params
