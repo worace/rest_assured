@@ -7,7 +7,9 @@
   <li>
     <strong>name: </strong><span><%= shelter.name %></span>
     <strong>beds available: </strong><span><%= shelter.beds_available %></span>
-    <strong>daily checkin time: </strong><span><%= shelter.checkin_time.strftime("%I:%M %p") %></span>
+    <% if shelter.checkin_time %>
+      <strong>daily checkin time: </strong><span><%= shelter.checkin_time.strftime("%I:%M %p") %></span>
+    <% end %>
     <% if shelter.availability_reports.any? %>
       <strong>last updated: </strong><span><%= shelter.availability_reports.last.created_at.strftime("%A, %b %e, %l:%M %p") %></span>
     <% else %>
