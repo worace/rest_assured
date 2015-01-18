@@ -3,17 +3,13 @@ class ListingsController < ApplicationController
 
   def sms
     number = params["From"][2..-1]
+    body = params["Body"]
     Rails.logger.info("Handling inbound SMS from #{number} with body: #{params["Body"]}")
-    shelter = Shelter.find_by(:contact_number => number)
-    if shelter
-      num_beds = params["Body"].to_i
-      Rails.logger.info("will set number of shelters to #{num_beds} for shelter #{shelter.inspect}")
-      shelter.availability_reports.create(:number_of_beds => num_beds)
-      client = Twilio::REST::Client.new
-      client.messages.create(from: TWILIO_NUMBER, to: number, body: "Thanks! We have updated your availability to indicate #{num_beds} beds available.")
+
+    if (SmsResponder.respond(body, number))
+      head(:created)
     else
-      Rails.logger.info("could not find shelter for contact number: #{number} :( ")
+      head(:unprocessable)
     end
-    return head(:created)
   end
 end

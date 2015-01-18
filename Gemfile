@@ -14,4 +14,5 @@ gem 'twilio-ruby'
 
 group :test do
   gem 'timecop'
+  gem 'mocha'
 end
