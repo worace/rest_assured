@@ -3,19 +3,15 @@ class SmsResponder
   def self.respond(body, from, client = Twilio::REST::Client.new)
     words = body.split(" ")
 
-    case words[0]
-    when "info"
+    case words[0].downcase
+    when "options"
       send_message(from, "Text 'shelters' for current availability listings
-      Text 'update <number>' to update availability
-      e.g. 'update 6'
-      Text 'info' for this info", client)
-
+      Text 'update <number>' to update availability (e.g. 'update 6')
+      Text 'options' for this info".squeeze(" "), client)
     when "shelters"
       send_message(from, availability_message, client)
-
     when "update"
       update_availability(from, words[1].to_i, client)
-
     else
       return false
     end

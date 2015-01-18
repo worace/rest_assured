@@ -13,15 +13,15 @@ class SmsResponderTest < ActiveSupport::TestCase
   end
 
   test "sends info about available commands" do
-    @mockClient.messages.expects(:create).with(from: TWILIO_NUMBER,
-      to: "1231231234",
-      body: "Text 'shelters' for current availability listings
-      Text 'update <number>' to update availability
-      e.g. 'update 6'
-      Text 'info' for this info"
-    )
+    @mockClient.messages.expects(:create).with do |message|
+      message[:from] == TWILIO_NUMBER &&
+      message [:to] == "1231231234" &&
+      message[:body].include?("Text \'shelters\' for") &&
+      message[:body].include?("Text \'update") &&
+      message[:body].include?("Text \'options\'")
+    end
 
-    SmsResponder.respond("info", "1231231234", @mockClient)
+    SmsResponder.respond("Options", "1231231234", @mockClient)
   end
 
   test "sends available listings" do
