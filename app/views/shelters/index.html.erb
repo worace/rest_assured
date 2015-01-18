@@ -5,7 +5,11 @@
   <li>
     <strong>name: </strong><span><%= shelter.name %></span>
     <strong>beds available: </strong><span><%= shelter.beds_available %></span>
-    <strong>last updated: </strong><span><%= shelter.availability_reports.last.created_at.strftime("%A, %b %e, %l:%M %p") %></span>
+    <% if shelter.availability_reports.any? %>
+      <strong>last updated: </strong><span><%= shelter.availability_reports.last.created_at.strftime("%A, %b %e, %l:%M %p") %></span>
+    <% else %>
+      <strong>No Availability Reports on File</strong>
+    <% end %>
   </li>
 <% end %>
 </ul>
