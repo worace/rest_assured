@@ -12,7 +12,8 @@ class Admin::SheltersController < Admin::BaseController
   end
 
   def update
-    Shelter.find(params[:id]).update_attributes(shelter_params)
+    checkin_time = Time.parse(params[:shelter][:checkin_time]) if params[:shelter][:checkin_time]
+    Shelter.find(params[:id]).update_attributes(shelter_params.merge(:checkin_time => checkin_time))
     redirect_to admin_shelters_path
   end
 

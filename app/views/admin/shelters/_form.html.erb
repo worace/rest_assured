@@ -38,5 +38,10 @@
   <%= f.label :age_range %>:
   <%= f.text_field :age_range %><br />
 
+  <%= f.label :checkin_time %> (MST):
+  <% Time.zone = "Mountain Time (US & Canada)" %>
+  <% default_time = Time.zone.local(2015, 1, 18, 16, 00, 00).strftime("%I:%M %p") %>
+  <%= f.time_field(:checkin_time, :value => default_time) %>
+
   <%= f.submit %>
 <% end %>

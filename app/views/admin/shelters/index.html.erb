@@ -5,6 +5,7 @@
   <li>
     <span><%= shelter.name %></span>
     <span><%= shelter.address %></span>
+    <strong>daily checkin time: </strong><span><%= shelter.checkin_time.strftime("%I:%M %p") %></span>
     <span><%= link_to "delete", admin_shelter_path(shelter), :method => "delete" %></span>
     <span><%= link_to "edit", edit_admin_shelter_path(shelter) %></span>
     <span><%= link_to "update bed availability", new_admin_shelter_availability_report_path(shelter) %></span>
