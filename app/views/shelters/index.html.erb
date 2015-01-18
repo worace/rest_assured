@@ -12,7 +12,7 @@
     <% end %>
     <% if shelter.availability_reports.any? %>
       <% Rails.logger.info("************** TRYING TO OUTPUT AVAILABILITY REPORT **************") %>
-      <strong>last updated: </strong><span><%= shelter.availability_reports.last.created_at.strftime("%A, %b %e, %l:%M %p") %></span>
+      <h1>got reports</h1>
     <% else %>
       <strong>No Availability Reports on File</strong>
     <% end %>
