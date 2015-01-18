@@ -11,8 +11,8 @@
       <strong>daily checkin time: </strong><span><%= shelter.checkin_time.strftime("%I:%M %p") %></span>
     <% end %>
     <% if shelter.availability_reports.any? %>
-      <% Rails.logger.info("************** TRYING TO OUTPUT AVAILABILITY REPORT **************") %>
-      <h1>got reports</h1>
+      <strong>last updated: </strong>
+      <span><%= shelter.availability_reports.last.created_at.strftime("%A, %b %e, %l:%M %p") %></span>
     <% else %>
       <strong>No Availability Reports on File</strong>
     <% end %>
