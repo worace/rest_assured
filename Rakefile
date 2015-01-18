@@ -5,7 +5,3 @@ require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
 
-task :look_for_checkins => :environment do
-  ShelterAvailability.check_shelters
-end
-
