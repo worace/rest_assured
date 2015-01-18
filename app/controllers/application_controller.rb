@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   rescue_from Exception do |exception|
-    render :text => exception.message
+    render :text => "###### #{exception.message}\n\n#{exception.backtrace.join("\n")}"
   end
 end
