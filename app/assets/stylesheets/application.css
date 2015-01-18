@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+
+/*shelter-view*/
+.shelter-list {
+  list-style: none;
+}
+
+.suppliers-index {
+  right: 50%;
+  font-size: 25px;
+}
+
+/*header*/
+.header {
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 20px;
+  background-color: whitesmoke;
+}
+
+.header a {
+  color: #3D3D3D;
+}
+
+.logo-title {
+  color: rgb(220, 22, 40);
+  font-size: 47px;
+  display: inline-block;
+}
