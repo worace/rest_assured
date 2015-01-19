@@ -1,4 +1,12 @@
 class ListingsController < ApplicationController
+  before_action :log_stuff
+
+  def log_stuff
+    Rails.logger.error("error hi")
+    Rails.logger.info("info hi")
+    Rails.logger.debug("debug hi")
+  end
+
   skip_before_action :verify_authenticity_token
 
   def sms
@@ -9,7 +17,8 @@ class ListingsController < ApplicationController
     if (SmsResponder.respond(body, number))
       head(:created)
     else
-      head(:unprocessable)
+      Rails.logger.info("inprcoces")
+      head(:unprocessable_entity)
     end
   end
 end
