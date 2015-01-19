@@ -36,7 +36,7 @@ class SmsResponder
     shelter = Shelter.find_by(contact_number: phone)
     if shelter
       shelter.availability_reports.create(:number_of_beds => num_beds)
-      send_message(phone, "Thanks! We have updated your availability to indicate #{num_beds} beds available.", client)
+      send_message(phone, "Thanks! We have updated your availability to indicate #{num_beds} beds available at #{shelter.name}.", client)
     else
       send_message(phone, "Sorry, your number is not on file for any Rest Assured files", client)
     end
