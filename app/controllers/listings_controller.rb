@@ -1,4 +1,12 @@
 class ListingsController < ApplicationController
+  before_action :log_stuff
+
+  def log_stuff
+    Rails.logger.error("error hi")
+    Rails.logger.info("info hi")
+    Rails.logger.debug("debug hi")
+  end
+
   skip_before_action :verify_authenticity_token
 
   def sms
