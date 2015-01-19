@@ -5,6 +5,7 @@
       <thead class="cf">
         <tr>
           <th class="text-center">Name</th>
+          <th class="text-center">Address</th>
           <th class="text-center">Beds available</th>
           <th class="text-center">Daily checkin time</th>
           <th class="text-center">Last updated</th>
@@ -18,6 +19,7 @@
         <% @shelters.each do |shelter| %>
         <tr>
           <td data-title="Name"><%= shelter.name %></td>
+          <td data-title="Address"><%= shelter.address %></td>
           <% if shelter.beds_available.present? %>
             <td data-title="Beds available"><%= shelter.beds_available %></td>
           <% else %>
