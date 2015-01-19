@@ -2,6 +2,9 @@ class Shelter < ActiveRecord::Base
   CHECKIN_INTERVAL = 10.minutes
   has_many :availability_reports
 
+  validates :name, presence: true
+  validates :address, presence: true
+
   def beds_available
     if availability_reports.any?
       availability_reports.last.try(:number_of_beds)
