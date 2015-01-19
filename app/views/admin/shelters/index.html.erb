@@ -9,6 +9,7 @@
           <th class="text-center">Beds available</th>
           <th class="text-center">Daily checkin time</th>
           <th class="text-center">Last updated</th>
+          <th class="text-center">Contact number</th>
           <th class="text-center"></th>
           <th class="text-center"></th>
           <th class="text-center"></th>
@@ -34,6 +35,11 @@
             <td data-title="Last updated"><%= shelter.availability_reports.last.created_at.strftime("%A, %b %e, %l:%M %p") %></td>
           <% else %>
             <td data-title="Last updated">--</td>
+          <% end %>
+          <% if shelter.contact_number.present? %>
+            <td data-title="Contact number"><%= shelter.contact_number %></td>
+          <% else %>
+            <td data-title="Contact number">--</td>
           <% end %>
           <td><%= link_to "Delete", admin_shelter_path(shelter), :method => "delete" %></td>
           <td><%= link_to "Edit", edit_admin_shelter_path(shelter) %></td>
