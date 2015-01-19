@@ -3,7 +3,11 @@ class Shelter < ActiveRecord::Base
   has_many :availability_reports
 
   def beds_available
-    availability_reports.last.try(:number_of_beds)
+    if availability_reports.any?
+      availability_reports.last.try(:number_of_beds)
+    else
+      "No information available"
+    end
   end
 
   def self.shelters_within_last_checkin_interval
