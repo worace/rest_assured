@@ -33,6 +33,7 @@ class Admin::SheltersController < Admin::BaseController
   def shelter_params
     shelter_params = params.require(:shelter).permit(Shelter.column_names - ["id", "created_at", "updated_at"])
     if params[:shelter][:checkin_time].present?
+      Time.zone = 'Mountain Time (US & Canada)'
       shelter_params.merge(:checkin_time => Time.parse(params[:shelter][:checkin_time]))
     else
       shelter_params

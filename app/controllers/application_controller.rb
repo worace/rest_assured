@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   rescue_from Exception do |exception|
-    Rails.logger.error("********* EXCEPTION RAISED: #{exceiption.message} *************")
+    Rails.logger.error("********* EXCEPTION RAISED: #{exception.message} *************")
     Rails.logger.error(exception.backtrace.join("\n"))
     raise exception
   end
