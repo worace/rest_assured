@@ -1,46 +1,50 @@
-<%= form_for [:admin, @shelter] do |f| %>
-  <%= f.label :name %>:
-  <%= f.text_field :name %><br />
+<div class="col-md-6 col-md-offset-3 form-horizontal shelter-form">
 
-  <%= f.label :address %>:
-  <%= f.text_field :address %><br />
+  <%= form_for [:admin, @shelter] do |f| %>
+    <%= f.label :name %>:
+    <%= f.text_field :name, class: "form-control" %>
 
-  <%= f.label :days_open %>:
-  <%= f.text_field :days_open %><br />
+    <%= f.label :address %>:
+    <%= f.text_field :address, class: "form-control" %>
 
-  <%= f.label :hours %>:
-  <%= f.text_field :hours %><br />
+    <%= f.label :days_open %>:
+    <%= f.text_field :days_open, class: "form-control" %>
 
-  <%= f.label :children_allowed %>:
-  <%= f.check_box :children_allowed %><br />
+    <%= f.label :hours %>:
+    <%= f.text_field :hours, class: "form-control" %>
 
-  <%= f.label :women_only %>:
-  <%= f.check_box :women_only %><br />
+    <%= f.label :phone %>:
+    <%= f.text_field :phone, class: "form-control" %>
 
-  <%= f.label :med_facilities %>:
-  <%= f.check_box :med_facilities %><br />
+    <%= f.label :age_range %>:
+    <%= f.text_field :age_range, class: "form-control" %><br>
 
-  <%= f.label :short_term %>:
-  <%= f.check_box :short_term %><br />
+    <%= f.label :checkin_time %> (MST):
+    <% default_time = Time.zone.local(2015, 1, 18, 16, 00, 00).strftime("%I:%M %p") %>
+    <%= f.time_field(:checkin_time, :value => default_time) %><br>
 
-  <%= f.label :long_term %>:
-  <%= f.check_box :long_term %><br />
+    <%= f.label :children_allowed %>:
+    <%= f.check_box :children_allowed, class: "checkbox" %>
 
-  <%= f.label :showers %>:
-  <%= f.check_box :showers %><br />
+    <%= f.label :women_only %>:
+    <%= f.check_box :women_only, class: "checkbox" %>
 
-  <%= f.label :pets_allowed %>:
-  <%= f.check_box :pets_allowed %><br />
+    <%= f.label :med_facilities %>:
+    <%= f.check_box :med_facilities, class: "checkbox" %>
 
-  <%= f.label :phone %>:
-  <%= f.text_field :phone %><br />
+    <%= f.label :short_term %>:
+    <%= f.check_box :short_term, class: "checkbox" %>
 
-  <%= f.label :age_range %>:
-  <%= f.text_field :age_range %><br />
+    <%= f.label :long_term %>:
+    <%= f.check_box :long_term, class: "checkbox" %>
 
-  <%= f.label :checkin_time %> (MST):
-  <% default_time = Time.zone.local(2015, 1, 18, 16, 00, 00).strftime("%I:%M %p") %>
-  <%= f.time_field(:checkin_time, :value => default_time) %>
+    <%= f.label :showers %>:
+    <%= f.check_box :showers, class: "checkbox" %>
 
-  <%= f.submit %>
-<% end %>
+    <%= f.label :pets_allowed %>:
+    <%= f.check_box :pets_allowed, class: "checkbox" %>
+
+
+    <%= f.submit class: "btn btn-default" %>
+  <% end %>
+</div>

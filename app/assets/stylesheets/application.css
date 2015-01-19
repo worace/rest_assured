@@ -14,11 +14,9 @@
  *= require_self
  */
 
-/*fonts*/
-
 /*body*/
 body {
-  font-family: 'Ubuntu';
+  font-family: 'PT Sans Narrow';
 }
 
 /*shelter-view*/
@@ -45,7 +43,7 @@ body {
 
 .logo-title {
   color: rgb(220, 22, 40);
-  font-size: 47px;
+  font-size: 60px;
   display: inline-block;
 }
 
@@ -98,4 +96,12 @@ body {
   Label the data
   */
   #no-more-tables td:before { content: attr(data-title); }
+}
+
+.shelter-form {
+  padding: 20px;
+}
+
+.shelter-form label {
+  margin-top: 10px;
 }
