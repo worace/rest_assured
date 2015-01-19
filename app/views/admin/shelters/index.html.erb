@@ -1,18 +1,46 @@
-<h1>Shelters</h1>
+<div class="col-md-8 col-md-offset-2">
+  <h1 class="text-center">All Shelters</h1>
+  <div id="no-more-tables">
+    <table class="col-md-12 table-bordered table-striped table-condensed cf">
+      <thead class="cf">
+        <tr>
+          <th class="text-center">Name</th>
+          <th class="text-center">Beds available</th>
+          <th class="text-center">Daily checkin time</th>
+          <th class="text-center">Last updated</th>
+          <th class="text-center"></th>
+          <th class="text-center"></th>
+          <th class="text-center"></th>
+        </tr>
+      </thead>
 
-<ul>
-<% @shelters.each do |shelter| %>
-  <li>
-    <span><%= shelter.name %></span>
-    <span><%= shelter.address %></span>
-    <% if shelter.checkin_time %>
-      <strong>daily checkin time: </strong><span><%= shelter.checkin_time.strftime("%I:%M %p") %></span>
-    <% end %>
-    <span><%= link_to "delete", admin_shelter_path(shelter), :method => "delete" %></span>
-    <span><%= link_to "edit", edit_admin_shelter_path(shelter) %></span>
-    <span><%= link_to "update bed availability", new_admin_shelter_availability_report_path(shelter) %></span>
-  </li>
-<% end %>
-</ul>
+      <tbody>
+        <% @shelters.each do |shelter| %>
+        <tr>
+          <td data-title="Name"><%= shelter.name %></td>
+          <% if shelter.beds_available.present? %>
+            <td data-title="Beds available"><%= shelter.beds_available %></td>
+          <% else %>
+            <td data-title="Beds available">--</td>
+          <% end %>
+          <% if shelter.checkin_time.present? %>
+            <td data-title="Daily checkin time"><%= shelter.checkin_time.strftime("%I:%M %p") %></td>
+          <% else %>
+            <td data-title="Daily checkin time">--</td>
+          <% end %>
+          <% if shelter.availability_reports.any? %>
+            <td data-title="Last updated"><%= shelter.availability_reports.last.created_at.strftime("%A, %b %e, %l:%M %p") %></td>
+          <% else %>
+            <td data-title="Last updated">--</td>
+          <% end %>
+          <td><%= link_to "Delete", admin_shelter_path(shelter), :method => "delete" %></td>
+          <td><%= link_to "Edit", edit_admin_shelter_path(shelter) %></td>
+          <td><%= link_to "Update", new_admin_shelter_availability_report_path(shelter) %></td>
+        </tr>
+        <% end %>
+      </tbody>
 
-<%= link_to "Add a Shelter", new_admin_shelter_path %>
+    </table>
+    <%= link_to "Add a Shelter", new_admin_shelter_path %>
+  </div>
+</div>
