@@ -53,4 +53,14 @@ class SmsResponderTest < ActiveSupport::TestCase
     assert_equal 12, @shelter1.beds_available
   end
 
+  test "outputs info message for unrecognized input" do
+    @mockClient.messages.expects(:create).with do |message|
+      message[:from] == TWILIO_NUMBER &&
+      message [:to] == "1231231234" &&
+      message[:body].include?("Text \'shelters\' for") &&
+      message[:body].include?("Text \'update") &&
+      message[:body].include?("Text \'options\'")
+    end
+    SmsResponder.respond("pizza", "1231231234", @mockClient)
+  end
 end

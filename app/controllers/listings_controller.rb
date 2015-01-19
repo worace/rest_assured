@@ -17,7 +17,8 @@ class ListingsController < ApplicationController
     if (SmsResponder.respond(body, number))
       head(:created)
     else
-      head(:unprocessable)
+      Rails.logger.info("inprcoces")
+      head(:unprocessable_entity)
     end
   end
 end

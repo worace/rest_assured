@@ -3,17 +3,17 @@ class SmsResponder
   def self.respond(body, from, client = Twilio::REST::Client.new)
     words = body.split(" ")
 
+    Rails.logger.info("message for words: #{words}")
+    puts "message for words :#{words}"
     case words[0].downcase
     when "options"
-      send_message(from, "Text 'shelters' for current availability listings
-      Text 'update <number>' to update availability (e.g. 'update 6')
-      Text 'options' for this info".squeeze(" "), client)
+      send_message(from, options_message, client)
     when "shelters"
       send_message(from, availability_message, client)
     when "update"
       update_availability(from, words[1].to_i, client)
     else
-      return false
+      send_message(from, options_message, client)
     end
   end
 
@@ -41,5 +41,11 @@ class SmsResponder
     else
       send_message(phone, "Sorry, your number is not on file for any Rest Assured files", client)
     end
+  end
+
+  def self.options_message
+    "Text 'shelters' for current availability listings
+     Text 'update <number>' to update availability (e.g. 'update 6')
+     Text 'options' for this info".squeeze(" ")
   end
 end
