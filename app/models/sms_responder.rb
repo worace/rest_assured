@@ -4,7 +4,6 @@ class SmsResponder
     words = body.split(" ")
 
     Rails.logger.info("message for words: #{words}")
-    puts "message for words :#{words}"
     case words[0].downcase
     when "options"
       send_message(from, options_message, client)
@@ -28,7 +27,7 @@ class SmsResponder
   end
 
   def self.availability_message
-    "beds available:\n " + Shelter.all.map do |shelter|
+    "Current Denver Shelter Bed Information:\n " + Shelter.all.map do |shelter|
       "#{shelter.name}: #{shelter.beds_available}"
     end.join("\n ")
   end

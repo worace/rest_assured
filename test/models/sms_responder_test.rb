@@ -6,9 +6,9 @@ class SmsResponderTest < ActiveSupport::TestCase
     @mockClient = stub("twilioMock", :messages => stub("messages"))
 
     Shelter.destroy_all
-    @shelter1 = Shelter.create(name: "shelter 1", contact_number: "1234561234")
+    @shelter1 = Shelter.create(name: "shelter 1", address: "678 Elati St", contact_number: "1234561234")
     @shelter1.availability_reports.create(number_of_beds: 12)
-    @shelter2 = Shelter.create(name: "shelter 2")
+    @shelter2 = Shelter.create(name: "shelter 2", address: "678 Elati St")
     @shelter2.availability_reports.create(number_of_beds: 2)
   end
 
@@ -27,7 +27,7 @@ class SmsResponderTest < ActiveSupport::TestCase
   test "sends available listings" do
     @mockClient.messages.expects(:create).with(from: TWILIO_NUMBER,
       to: "1231231234",
-      body: "beds available:
+      body: "Current Denver Shelter Bed Information:
       shelter 1: 12
       shelter 2: 2".squeeze(' ')
     )
