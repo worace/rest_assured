@@ -17,12 +17,18 @@
             <td data-title="Name"><%= shelter.name %></td>
             <% if shelter.beds_available.present? %>
               <td data-title="Beds available"><%= shelter.beds_available %></td>
-            <% end %>
-            <td data-title="Beds available"><%= shelter.checkin_time.strftime("%I:%M %p") %></td>
-            <% if shelter.availability_reports.any? %>
-              <td data-title="Daily checkin time"><%= shelter.availability_reports.last.created_at.strftime("%A, %b %e, %l:%M %p") %></td>
             <% else %>
-              <td data-title="Last updated">No availability Reports on File</td>
+              <td data-title="Beds available">--</td>
+            <% end %>
+            <% if shelter.checkin_time.present? %>
+              <td data-title="Daily checkin time"><%= shelter.checkin_time.strftime("%I:%M %p") %></td>
+            <% else %>
+              <td data-title="Daily checkin time">--</td>
+            <% end %>
+            <% if shelter.availability_reports.any? %>
+              <td data-title="Last updated"><%= shelter.availability_reports.last.created_at.strftime("%A, %b %e, %l:%M %p") %></td>
+            <% else %>
+              <td data-title="Last updated">--</td>
             <% end %>
           </tr>
         <% end %>

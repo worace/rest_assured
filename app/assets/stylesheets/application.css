@@ -15,10 +15,11 @@
  */
 
 /*fonts*/
-@import url(https://fonts.googleapis.com/css?family=Poller+One|Ubuntu:700,400);
 
 /*body*/
-
+body {
+  font-family: 'Ubuntu';
+}
 
 /*shelter-view*/
 .shelter-list {
